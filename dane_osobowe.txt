@@ -1,0 +1,6 @@
+imię: Bartłomiej 
+nazwisko: Makowski
+numer albumu: 232220
+e-mail: 232220@edu.p.lodz.pl
+tryb studiów: niestacjonarne
+grupa: AiSR 1rok2semestr
