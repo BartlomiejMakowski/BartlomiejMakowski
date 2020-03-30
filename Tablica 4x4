@@ -1,0 +1,270 @@
+// Proba.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
+//
+
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <ctime>
+#include <cstdlib>
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string>
+
+#define  L_KOLUMN 4
+#define  L_WIERSZY 4
+
+void wprowadz_dane(int tab[][L_KOLUMN])
+{
+    for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+    {
+        for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+        {
+            printf_s("Podaj liczbe");
+            int liczba;
+            scanf_s("%d", &liczba);
+            tab[wiersz][kolumny] = liczba;
+           
+
+        }
+    }
+}
+
+
+void  wys_dane(int tab[][L_KOLUMN])
+{
+    for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+    {
+        for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+        {
+            printf_s("%4d\t", tab[wiersz][kolumny]);
+        
+        }
+        printf_s("\n");
+    }
+}
+void gen_los(int tab[][L_KOLUMN])
+{
+    for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++) 
+    {
+        for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+        {
+            tab[wiersz][kolumny] = std::rand() % 100 + 0;
+        }
+    } 
+}
+
+float srednia(int tab[][L_KOLUMN])
+{
+        int ss = 0;
+for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+  {
+    for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+    {
+        ss = ss+tab[wiersz][kolumny];
+
+
+    }
+    
+  }
+int kw = L_KOLUMN * L_WIERSZY;
+float srednia = ss / kw;
+return srednia;        
+}
+
+
+void wys_dane_posortowane(int tab[])
+{
+    printf_s("Posortowana tablica: \n");
+    for (int k = 0; k < L_WIERSZY * L_KOLUMN; k++)
+    {
+        printf_s("%d ", tab[k]);
+    }
+    printf_s("\n");
+}
+
+float mediana(int tab [][L_KOLUMN])
+{
+    int tab_sort_temp[L_WIERSZY * L_KOLUMN] = { 0 };
+    int p = 0;
+        for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+        {
+            for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+            {
+                tab_sort_temp[p] = tab[wiersz][kolumny];
+                p++;
+
+            }
+        }
+    int ip = L_KOLUMN * L_WIERSZY;
+    std::sort(tab_sort_temp, tab_sort_temp + ip);
+    wys_dane_posortowane(tab_sort_temp);
+
+    float mediana = 0;
+if (ip % 2 == 0)
+{
+    int x = tab_sort_temp[(ip - 1) / 2] + tab_sort_temp[ip / 2];
+    mediana = x / 2;
+}
+else
+{
+    mediana = (float)(tab_sort_temp[ip / 2]);
+}
+return mediana;
+}
+void zapisz_dane(int tab[][L_KOLUMN])
+{
+    std::fstream plik;
+    plik.open("tab.txt", std::ios::out | std::ios::trunc);
+    if (plik.good() == true)
+    {
+        for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+        {
+
+            for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+            {
+                plik << tab[wiersz][kolumny] << " ";
+            }
+
+        }
+        plik.close();
+    }
+}
+void wczyt_dane(int tab[][L_KOLUMN])
+{
+    std::fstream plik;
+    plik.open("tab.txt", std::ios::in);
+    if (plik.good() == true)
+    {
+        for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+        {
+            for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+            {
+                plik >> tab[wiersz][kolumny];
+            }
+        }
+        plik.close();
+    }
+}
+
+
+void zamien_max_min(int tab[][L_KOLUMN])
+{
+    int max = tab[0][0], min = tab[0][0];
+    for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+    {
+        for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+        {
+            if (tab[wiersz][kolumny] < min)
+            {
+                min = tab[wiersz][kolumny];
+            }
+            if (tab[wiersz][kolumny] > max)
+            {
+                max = tab[wiersz][kolumny];
+            }
+        }
+    }
+    for (int wiersz = 0; wiersz < L_WIERSZY; wiersz++)
+    {
+        for (int kolumny = 0; kolumny < L_KOLUMN; kolumny++)
+        {
+            int wartosc = tab[wiersz][kolumny];
+            if (wartosc == min)
+            {
+                tab[wiersz][kolumny] = max;
+            }
+            if (wartosc == max)
+            {
+                tab[wiersz][kolumny] = min;
+            }
+        }
+    }
+}
+
+
+void menu(void)
+{
+    printf_s("\n");
+    printf_s("1 - wprowadz dane\n");
+    printf_s("2 - wyswietl dane\n");
+    printf_s("3 - oblicz srednia i mediane\n");
+    printf_s("4 - zamien wartosc minimalna z maksymalna\n");
+    printf_s("5 - generuj dane losowo\n");
+    printf_s("z - zapisz dane do pliku\n");
+    printf_s("w - wczytaj dane z pliku\n");
+    printf_s("k - koniec programu\n");
+    printf_s("\n");
+}
+
+int main()
+{
+    int tablica[L_WIERSZY][L_KOLUMN] = { 0 };
+    char opcja = 0;
+    srand(time(NULL));
+    while (opcja != 'k')
+    {
+        menu();
+        opcja = _getch();
+
+        switch (opcja)
+        {
+        case '1':
+            wprowadz_dane(tablica);
+            break;
+
+        case '2':
+            wys_dane(tablica);
+            break;
+
+        case '3':
+
+            printf_s("Srednia wartosci wynosi: %f\n", srednia(tablica));
+            printf_s("Mediana wartosci wynosi: %f\n", mediana(tablica));
+            break;
+
+        case '4':
+            zamien_max_min(tablica);
+            printf_s("Zamieniono wartosc min z max.\n");
+            break;
+
+        case '5':
+            gen_los(tablica);
+            printf_s("Wygenerowano dane losowo.\n");
+            break;
+
+        case 'z':
+            zapisz_dane(tablica);
+            printf_s("Zapisano dane do pliku.\n");
+            break;
+
+        case 'w':
+            wczyt_dane(tablica);
+            printf_s("Odczytano dane z pliku.\n");
+            break;
+
+        case 'k':
+            //zakonczenie programu
+            break;
+
+        default:
+            printf_s("Wybrano zla opcje.\n\n");
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+// Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
+// Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
+
+// Porady dotyczące rozpoczynania pracy:
+//   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
+//   2. Użyj okna programu Team Explorer, aby nawiązać połączenie z kontrolą źródła
+//   3. Użyj okna Dane wyjściowe, aby sprawdzić dane wyjściowe kompilacji i inne komunikaty
+//   4. Użyj okna Lista błędów, aby zobaczyć błędy
+//   5. Wybierz pozycję Projekt > Dodaj nowy element, aby utworzyć nowe pliki kodu, lub wybierz pozycję Projekt > Dodaj istniejący element, aby dodać istniejące pliku kodu do projektu
+//   6. Aby w przyszłości ponownie otworzyć ten projekt, przejdź do pozycji Plik > Otwórz > Projekt i wybierz plik sln
