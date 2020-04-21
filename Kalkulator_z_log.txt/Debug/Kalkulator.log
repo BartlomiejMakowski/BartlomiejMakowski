@@ -1,0 +1,5 @@
+﻿  Kalkulator.cpp
+C:\Users\Bartek\source\repos\Kalkulator\Kalkulator\Kalkulator.cpp(86,23): warning C4477: „fprintf”: ciąg formatu „%d” wymaga argumentu typu „int”, ale argument 1 ze zmienną liczbą argumentów ma typ „double”
+C:\Users\Bartek\source\repos\Kalkulator\Kalkulator\Kalkulator.cpp(86,23): warning C4477: „fprintf”: ciąg formatu „%d” wymaga argumentu typu „int”, ale argument 2 ze zmienną liczbą argumentów ma typ „double”
+C:\Users\Bartek\source\repos\Kalkulator\Kalkulator\Kalkulator.cpp(86,23): warning C4477: „fprintf”: ciąg formatu „%d” wymaga argumentu typu „int”, ale argument 3 ze zmienną liczbą argumentów ma typ „double”
+  Kalkulator.vcxproj -> C:\Users\Bartek\source\repos\Kalkulator\Debug\Kalkulator.exe

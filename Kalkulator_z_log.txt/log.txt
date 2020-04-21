@@ -1,0 +1,5 @@
+Wynik dodawnia 2 + 11 = 13
+Wynik dodawnia 2 + 3 = 5
+Wynik dodawnia 2 - 3 = 6
+Wynik dodawnia 2 * 3 = 6
+Wynik dodawnia 0 / 1073741824 = 0
