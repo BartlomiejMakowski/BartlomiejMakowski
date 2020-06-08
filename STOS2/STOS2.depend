@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1591445682 source:c:\users\bartek\desktop\nowy folder\stos2\fukncje.cpp
+	<stdio.h>
+	<stdlib.h>
+
+1591445577 source:c:\users\bartek\desktop\nowy folder\stos2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"funckje.h"
+
+1591445690 c:\users\bartek\desktop\nowy folder\stos2\funckje.h
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"fukncje.cpp"
+
+1591445682 c:\users\bartek\desktop\nowy folder\stos2\fukncje.cpp
+	<stdio.h>
+	<stdlib.h>
+
