@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1593277354 source:c:\users\bartek\desktop\nowy folder\kl_2\main.cpp
+	<iostream>
+	<string>
+	<cmath>
+
